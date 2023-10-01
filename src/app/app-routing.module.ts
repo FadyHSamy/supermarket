@@ -14,6 +14,10 @@ const routes: Routes = [
         (m) => m.HomepagePageModule
       ),
   },
+  {
+    path: 'navbar',
+    loadChildren: () => import('./shared/navbar/navbar/navbar.module').then( m => m.NavbarPageModule)
+  },
 ];
 
 @NgModule({
