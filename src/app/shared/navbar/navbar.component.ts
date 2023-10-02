@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.page.html',
-  styleUrls: ['./navbar.page.scss'],
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarPage implements OnInit {
-  constructor() {}
+export class NavbarComponent  implements OnInit {
+
+  constructor() { }
 
   ngOnInit() {}
-
   navTabs: [TabName: string, TabRedirect: string][] = [
     ['Home', '/home'],
     ['About', '/About'],
@@ -20,5 +20,5 @@ export class NavbarPage implements OnInit {
     console.log(tab, i);
   }
 
-  companyName:string = "SuperMarket"
+  companyName: string = 'SuperMarket';
 }

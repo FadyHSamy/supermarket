@@ -5,10 +5,12 @@
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{companyName}}</span>
     </a>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto lg:w-3/5">
-      <input type="text" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
+      <input type="text"
+        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Search...">
     </div>
     <div class="flex items-center">
-      <button  class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">(555) 412-1234</button>
+      <button class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">(555) 412-1234</button>
       <button class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</button>
     </div>
   </div>
@@ -17,7 +19,7 @@
       <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
         <li *ngFor="let tab of navTabs;let i = index">
           <button class="text-gray-900 dark:text-white hover:underline" aria-current="page"
-           (click)="navListClick(tab,i)">{{tab[0]}}</button>
+            (click)="navListClick(tab,i)">{{tab[0]}}</button>
         </li>
       </ul>
     </div>
