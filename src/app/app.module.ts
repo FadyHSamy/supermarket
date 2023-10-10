@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 // import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -16,6 +17,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

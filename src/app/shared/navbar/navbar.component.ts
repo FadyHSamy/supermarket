@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
@@ -8,15 +9,14 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(
-    private router: Router,
-    private modalController: ModalController
-  ) {}
+  constructor(private router: Router, private formBuilder: FormBuilder) {}
 
   ngOnInit() {}
   //#region Variables
   companyName: string = 'SuperMarket';
+  modalVisible: boolean = false;
   loginModalVisible: boolean = false;
+  registrationModalVisible: boolean = false;
   navTabs: { TabName: string; TabRedirect: string }[] = [
     {
       TabName: 'HomePage',
@@ -32,19 +32,29 @@ export class NavbarComponent implements OnInit {
     this.router.navigate([tab.TabRedirect]);
   }
   openLoginModal() {
+    this.modalVisible = true;
     this.loginModalVisible = true;
   }
   registerButtonClick() {}
-  loginButtonClick() {}
-  navigateToRegistration() {}
-  navigateToLogin() {}
+  loginButtonClick() {
+    console.log(
+      this.loginModalForm.controls['emailAddress'].value,
+      this.loginModalForm.controls['password'].value
+    );
+  }
+  navigateToRegistration() {
+    this.loginModalVisible = false;
+    this.registrationModalVisible = true;
+  }
+  navigateToLogin() {
+    this.registrationModalVisible = false;
+    this.loginModalVisible = true;
+  }
   forgetPassword() {}
   dismissLoginModal() {
+    this.modalVisible = false;
     this.loginModalVisible = false;
-  }
-
-  closeModal() {
-    this.modalController.dismiss();
+    this.registrationModalVisible = false;
   }
 
   login() {
@@ -58,11 +68,16 @@ export class NavbarComponent implements OnInit {
   openRegistration() {
     // Handle opening registration form logic here
   }
-  async toggleModal() {
-    const modal = await this.modalController.create({
-      id: 'authenticationModal',
-      component: NavbarComponent,
-    });
-    return await modal.present();
-  }
+
+  loginModalForm: FormGroup = this.formBuilder.group({
+    emailAddress: [null],
+    password: [null],
+  });
+  registrationModalForm: FormGroup = this.formBuilder.group({
+    firstName: [null],
+    lastName: [null],
+    emailAddress: [null],
+    password: [null],
+    confirmPassword: [null],
+  });
 }
