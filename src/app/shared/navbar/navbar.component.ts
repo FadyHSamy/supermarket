@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,16 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    public translate: TranslateService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.translate.use(this.currentLanguage);
+    this.navigationForm.patchValue({ language: this.currentLanguage });
+  }
   //#region Variables
   companyName: string = 'SuperMarket';
   modalVisible: boolean = false;
@@ -23,9 +31,18 @@ export class NavbarComponent implements OnInit {
       TabRedirect: '/homepage',
     },
   ];
-  // email: string;
-  // password: string;
-  // rememberMe: boolean;
+  language: { languageName: string; languageSymbol: string }[] = [
+    {
+      languageName: 'English',
+      languageSymbol: 'en',
+    },
+    {
+      languageName: 'Arabic',
+      languageSymbol: 'ar',
+    },
+  ];
+  currentLanguage: string = localStorage.getItem('currentLanguage') || 'en';
+
   //#endregion
 
   navListClick(tab: { TabName: string; TabRedirect: string }) {
@@ -56,19 +73,14 @@ export class NavbarComponent implements OnInit {
     this.loginModalVisible = false;
     this.registrationModalVisible = false;
   }
-
-  login() {
-    // Handle login logic here
+  onChangeLanguage() {
+    localStorage.setItem(
+      'currentLanguage',
+      this.navigationForm.controls['language'].value
+    );
+    this.translate.use(this.navigationForm.controls['language'].value);
+    location.reload()
   }
-
-  forgotPassword() {
-    // Handle forgot password logic here
-  }
-
-  openRegistration() {
-    // Handle opening registration form logic here
-  }
-
   loginModalForm: FormGroup = this.formBuilder.group({
     emailAddress: [null],
     password: [null],
@@ -79,5 +91,8 @@ export class NavbarComponent implements OnInit {
     emailAddress: [null],
     password: [null],
     confirmPassword: [null],
+  });
+  navigationForm: FormGroup = this.formBuilder.group({
+    language: [null],
   });
 }

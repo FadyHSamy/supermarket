@@ -1,0 +1,16 @@
+{
+  "LOGIN": "تسجيل الدخول",
+  "Register": "تسجيل",
+  "RegistrationForm": "تسجيل العميل",
+  "Search": "بحث",
+  "EmailAddress": "البريد الالكتروني",
+  "Password": "كلمة المرور",
+  "ConfirmPassword": "تأكيد كلمة المرور",
+  "LostPassword": "هل نسيت كلمة المرور",
+  "LoginButton": "الدخول",
+  "NotRegistered": "غير مسجل؟",
+  "CreateAccount": "إنشاء حساب",
+  "FirstName": "الاسم الاول",
+  "LastName": "اسم العائلة",
+  "AlreadyHaveAccount": "هل لديك حساب ؟"
+}

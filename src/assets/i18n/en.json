@@ -1,0 +1,16 @@
+{
+  "LOGIN": "Login",
+  "Register": "Register",
+  "RegistrationForm": "Registration",
+  "Search": "Search",
+  "EmailAddress": "Email Address",
+  "Password": "Password",
+  "ConfirmPassword": "Confirm Password",
+  "LostPassword": "Lost Password?",
+  "LoginButton": "Login to your account",
+  "NotRegistered": "Not registered?",
+  "CreateAccount": "Create account",
+  "FirstName": "First Name",
+  "LastName": "Last Name",
+  "AlreadyHaveAccount": "Already have an account ?"
+}
