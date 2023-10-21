@@ -12,5 +12,6 @@
   "CreateAccount": "Create account",
   "FirstName": "First Name",
   "LastName": "Last Name",
-  "AlreadyHaveAccount": "Already have an account ?"
+  "AlreadyHaveAccount": "Already have an account ?",
+  "Language": "Language"
 }

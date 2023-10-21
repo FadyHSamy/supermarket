@@ -1,80 +1,96 @@
-.navList {
-  &.py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-  &.pl-3 {
-    padding-left: 0.75rem;
-  }
-
-  &.pr-4 {
-    padding-right: 1rem;
-  }
-
-  &.text-gray-900 {
-    color: #111827;
-  }
-
-  &.rounded {
-    border-radius: 0.25rem;
-  }
-
-  &:hover {
-    background-color: #f3f4f6;
-  }
-
-  @media (min-width: 768px) {
-    &:hover {
-      background-color: transparent;
-      color: #1d4ed8;
-    }
-
-    &.p-0 {
-      padding: 0;
-    }
-
-    &.dark:hover {
-      color: #1f2937;
-    }
-
-    &.dark:hover {
-      background-color: transparent;
-    }
-
-    &.dark {
-      color: #ffffff;
-    }
-
-    &.dark:hover {
-      background-color: #374151;
-      color: #ffffff;
-    }
-  }
+.languageDropDown {
+  // width: 5rem; /* Adjust the width as needed */
+  padding: 0.5rem; /* Adjust the padding as needed */
+  font-size: 1rem; /* Adjust the font size as needed */
+  // border: 1px solid #ccc; /* Adjust the border styles as needed */
+  border-radius: 4px; /* Adjust the border radius as needed */
+  background-color: #fff; /* Adjust the background color as needed */
+  color: #333; /* Adjust the text color as needed */
+  appearance: none; /* Remove the default appearance */
 }
-.nav {
+
+.languageDropDown:focus {
+  outline: none; /* Remove the default focus style */
+  box-shadow: none; /* Add a subtle box shadow when focused */
+}
+
+ion-select {
+  inset: 0;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.25em;
+  overflow: auto;
+  color: CanvasText;
+  background-color: Canvas;
+}
+.headerCss {
+  box-shadow: none;
+}
+.navTabsCss {
+  color: rgb(14, 90, 167);
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  font-weight: 500;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  background-color: #f9fafb;
-  margin-top: 1rem;
-
-  @media (min-width: 768px) {
-    padding: 0;
-    margin-top: 0;
-    border: 0;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-
-    &.dark {
-      background-color: #1f2937;
-      border: 1px solid #374151;
-    }
-  }
 }
 
+.loginButton {
+  align-items: center;
+  display: flex;
+  justify-content: end !important;
+  ion-button {
+    /**
+   * @prop --background: Background of the button
+   * @prop --background-activated: Background of the button when pressed. Note: setting this will interfere with the Material Design ripple.
+   * @prop --background-activated-opacity: Opacity of the button when pressed
+   * @prop --background-focused: Background of the button when focused with the tab key
+   * @prop --background-focused-opacity: Opacity of the button when focused with the tab key
+   * @prop --background-hover: Background of the button on hover
+   * @prop --background-hover-opacity: Opacity of the background on hover
+   *
+   * @prop --color: Text color of the button
+   * @prop --color-activated: Text color of the button when pressed
+   * @prop --color-focused: Text color of the button when focused with the tab key
+   * @prop --color-hover: Text color of the button when hover
+   *
+   * @prop --transition: Transition of the button
+   *
+   * @prop --border-radius: Border radius of the button
+   * @prop --border-width: Border width of the button
+   * @prop --border-style: Border style of the button
+   * @prop --border-color: Border color of the button
+   *
+   * @prop --ripple-color: Color of the button ripple effect
+   *
+   * @prop --box-shadow: Box shadow of the button
+   * @prop --opacity: Opacity of the button
+   *
+   * @prop --padding-top: Top padding of the button
+   * @prop --padding-end: Right padding if direction is left-to-right, and left padding if direction is right-to-left of the button
+   * @prop --padding-bottom: Bottom padding of the button
+   * @prop --padding-start: Left padding if direction is left-to-right, and right padding if direction is right-to-left of the button
+   */
+    --ripple-color: var(--background);
+    --color: rgb(14, 90, 167);
+  }
+  ion-select {
+    color: rgb(14, 90, 167);
+    --highlight-color: var(--background);
+  }
+  ion-select::part(icon) {
+    display: none !important;
+  }
+}
+.logoAndNameCss {
+  ion-avatar {
+    margin-right: 10px;
+  }
+  ion-label {
+    color: rgb(14, 90, 167);
+  }
+}
+.search__input {
+  background-color: #f4f2f2;
+  color: rgb(14, 90, 167);
+  border-radius: 30px;
+  padding: 0.7rem 1rem;
+  box-shadow: none;
+  text-align: center;
+}

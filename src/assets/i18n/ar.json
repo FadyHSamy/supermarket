@@ -12,5 +12,6 @@
   "CreateAccount": "إنشاء حساب",
   "FirstName": "الاسم الاول",
   "LastName": "اسم العائلة",
-  "AlreadyHaveAccount": "هل لديك حساب ؟"
+  "AlreadyHaveAccount": "هل لديك حساب ؟",
+  "Language":"اللغة"
 }

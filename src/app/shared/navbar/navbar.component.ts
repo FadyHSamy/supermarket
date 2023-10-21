@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isMobileScreen;
     this.translate.use(this.currentLanguage);
     this.navigationForm.patchValue({ language: this.currentLanguage });
   }
@@ -30,6 +31,14 @@ export class NavbarComponent implements OnInit {
       TabName: 'HomePage',
       TabRedirect: '/homepage',
     },
+    {
+      TabName: 'HomePage',
+      TabRedirect: '/homepage',
+    },
+    {
+      TabName: 'HomePage',
+      TabRedirect: '/homepage',
+    },
   ];
   language: { languageName: string; languageSymbol: string }[] = [
     {
@@ -37,15 +46,17 @@ export class NavbarComponent implements OnInit {
       languageSymbol: 'en',
     },
     {
-      languageName: 'Arabic',
+      languageName: 'عربي',
       languageSymbol: 'ar',
     },
   ];
   currentLanguage: string = localStorage.getItem('currentLanguage') || 'en';
+  searchBarBoolean: boolean = true;
 
   //#endregion
 
   navListClick(tab: { TabName: string; TabRedirect: string }) {
+    console.log(tab);
     this.router.navigate([tab.TabRedirect]);
   }
   openLoginModal() {
@@ -74,12 +85,13 @@ export class NavbarComponent implements OnInit {
     this.registrationModalVisible = false;
   }
   onChangeLanguage() {
+    console.log('!');
     localStorage.setItem(
       'currentLanguage',
       this.navigationForm.controls['language'].value
     );
     this.translate.use(this.navigationForm.controls['language'].value);
-    location.reload()
+    location.reload();
   }
   loginModalForm: FormGroup = this.formBuilder.group({
     emailAddress: [null],
@@ -95,4 +107,10 @@ export class NavbarComponent implements OnInit {
   navigationForm: FormGroup = this.formBuilder.group({
     language: [null],
   });
+  handleSearchInput(event: any) {
+    console.log(event);
+  }
+  get isMobileScreen() {
+    return window.innerWidth > 991;
+  }
 }

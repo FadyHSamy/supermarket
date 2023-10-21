@@ -1,36 +1,48 @@
 <form [formGroup]="navigationForm">
-  <nav class="bg-white border-gray-200 dark:bg-gray-900">
-    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-      <a href="http://localhost:8100/homepage" class="flex items-center">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{companyName}}</span>
-      </a>
-      <div class="items-center justify-between hidden w-full md:flex md:w-auto lg:w-3/5">
-        <input type="text"
-          class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="{{ 'Search' | translate }}...">
-      </div>
-      <div class="flex items-center">
-        <button class="text-sm  text-blue-600 dark:text-blue-500 hover:underline" (click)="openLoginModal()">{{"LOGIN" |
-          translate}}</button>
-      </div>
-      <select formControlName="language">
-        <option [value]="lang.languageSymbol" *ngFor="let lang of language" (click)="onChangeLanguage()">
-          {{lang.languageName}}</option>
-      </select>
-    </div>
-    <div class="max-w-screen-xl px-4 py-3 mx-auto">
-      <div class="flex items-center">
-        <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
-          <li *ngFor="let tab of navTabs">
-            <button class="text-gray-900 dark:text-white hover:underline" aria-current="page"
-              (click)="navListClick(tab)">{{tab.TabName}}</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <ion-header class="headerCss">
+    <ion-toolbar>
+      <ion-grid [fixed]="true">
+        <ion-row class="pb-2">
+          <ion-col class="flex ion-align-items-center ion-justify-content-start logoAndNameCss">
+            <ion-avatar>
+              <ion-img src="https://flowbite.com/docs/images/logo.svg"></ion-img>
+            </ion-avatar>
+            <ion-label>{{companyName}}</ion-label>
+          </ion-col>
+          <ion-col *ngIf="isMobileScreen">
+            <ion-item lines="none">
+              <ion-input type="text" class="search__input" placeholder="Type your text"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col class="loginButton">
+            <ion-button (click)="openLoginModal()" fill="none">{{"LOGIN" | translate}}</ion-button>
+            <ion-select interface="popover" placeholder="{{'Language' | translate}}" formControlName="language"
+              class="languageDropDown" (ionChange)="onChangeLanguage()">
+              <ion-select-option *ngFor="let lang of language" [value]="lang.languageSymbol">
+                {{lang.languageName}}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!isMobileScreen">
+          <ion-col class="searchColumnCss">
+            <ion-item lines="none">
+              <ion-input type="text" class="search__input" placeholder="Type your text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="navTabsCss">
+          <ng-container *ngFor="let tab of navTabs; let isLast = last">
+            <a href="#" onclick="return false;" (click)="navListClick(tab)" [ngClass]="{'mr-4': !isLast}">
+              {{ tab.TabName }}
+            </a>
+          </ng-container>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
 </form>
+
 <ion-modal [isOpen]="modalVisible" [backdropDismiss]="false">
   <ng-template>
     <ion-content>
@@ -76,7 +88,7 @@
                       <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember
                         me</label>
                     </div> -->
-                    <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500"
+                    <a href="#" onclick="return false;" class="text-sm text-blue-700 hover:underline dark:text-blue-500"
                       (click)="forgetPassword()">{{"LostPassword" |
                       translate}}</a>
                   </div>
@@ -86,7 +98,8 @@
                     translate}}</button>
                   <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                     {{"NotRegistered" |
-                    translate}} <a href="#" class="text-blue-700 hover:underline dark:text-blue-500"
+                    translate}} <a href="#" onclick="return false;"
+                      class="text-blue-700 hover:underline dark:text-blue-500"
                       (click)="navigateToRegistration()">{{"CreateAccount" |
                       translate}}</a>
                   </div>
@@ -100,14 +113,16 @@
                         translate}}</label>
                       <input type="text" formControlName="firstName"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="First Name">
+                        placeholder="{{'FirstName' |
+                        translate}}">
                     </div>
                     <div>
                       <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{"LastName" |
                         translate}}</label>
                       <input type="text" formControlName="lastName"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="First Name">
+                        placeholder="{{'LastName' |
+                        translate}}">
                     </div>
                   </div>
                   <div>
@@ -115,21 +130,24 @@
                       translate}}</label>
                     <input type="text" formControlName="emailAddress"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                      placeholder="EmailAddress">
+                      placeholder="{{'EmailAddress' |
+                      translate}}">
                   </div>
                   <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{"Password" |
                       translate}}</label>
                     <input type="text" formControlName="password"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                      placeholder="Password">
+                      placeholder="{{'Password' |
+                      translate}}">
                   </div>
                   <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{"ConfirmPassword" |
                       translate}}</label>
                     <input type="text" formControlName="confirmPassword"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                      placeholder="Confirm Password">
+                      placeholder="{{'ConfirmPassword' |
+                      translate}}">
                   </div>
                   <div class="pt-2">
                     <button
@@ -139,8 +157,8 @@
                   </div>
                   <div class="text-sm font-medium text-gray-500 dark:text-gray-300 pt-1">
                     {{"AlreadyHaveAccount" |
-                    translate}} <a href="#" class="text-blue-700 hover:underline dark:text-blue-500"
-                      (click)="navigateToLogin()">{{"LOGIN" |
+                    translate}} <a href="#" onclick="return false;"
+                      class="text-blue-700 hover:underline dark:text-blue-500" (click)="navigateToLogin()">{{"LOGIN" |
                       translate}}</a>
                   </div>
                 </form>
