@@ -31,3 +31,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.spin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+ion-spinner {
+  width: 28px;
+  height: 28px;
+  stroke: #444;
+  fill: #222;
+  color: rgb(14, 90, 167);
+}
+ion-loading {
+  --spinner-color: red !important;
+}

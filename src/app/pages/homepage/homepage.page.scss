@@ -1,0 +1,38 @@
+ion-button {
+  /**
+ * @prop --background: Background of the button
+ * @prop --background-activated: Background of the button when pressed. Note: setting this will interfere with the Material Design ripple.
+ * @prop --background-activated-opacity: Opacity of the button when pressed
+ * @prop --background-focused: Background of the button when focused with the tab key
+ * @prop --background-focused-opacity: Opacity of the button when focused with the tab key
+ * @prop --background-hover: Background of the button on hover
+ * @prop --background-hover-opacity: Opacity of the background on hover
+ *
+ * @prop --color: Text color of the button
+ * @prop --color-activated: Text color of the button when pressed
+ * @prop --color-focused: Text color of the button when focused with the tab key
+ * @prop --color-hover: Text color of the button when hover
+ *
+ * @prop --transition: Transition of the button
+ *
+ * @prop --border-radius: Border radius of the button
+ * @prop --border-width: Border width of the button
+ * @prop --border-style: Border style of the button
+ * @prop --border-color: Border color of the button
+ *
+ * @prop --ripple-color: Color of the button ripple effect
+ *
+ * @prop --box-shadow: Box shadow of the button
+ * @prop --opacity: Opacity of the button
+ *
+ * @prop --padding-top: Top padding of the button
+ * @prop --padding-end: Right padding if direction is left-to-right, and left padding if direction is right-to-left of the button
+ * @prop --padding-bottom: Bottom padding of the button
+ * @prop --padding-start: Left padding if direction is left-to-right, and right padding if direction is right-to-left of the button
+ */
+  --ripple-color: transparent;
+  --color: none;
+  --box-shadow: none;
+  --background: transparent;
+  --background-hover: none;
+}

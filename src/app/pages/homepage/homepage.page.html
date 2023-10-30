@@ -1,42 +1,43 @@
+<ion-loading [isOpen]="spinner" spinner="circular"></ion-loading>
 <ion-content>
   <form>
-    <div>
-      <ion-grid [fixed]="true">
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="6" size-sm="3"> <ion-card>
-              <ion-img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-              <ion-card-header>
-                <ion-card-title>100.00LE</ion-card-title>
-                <ion-card-subtitle>FrappIT</ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>
-          </ion-col>
-          <ion-col size="6" size-sm="3"> <ion-card>
-              <ion-img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-              <ion-card-header>
-                <ion-card-title>100.00LE</ion-card-title>
-                <ion-card-subtitle>FrappIT</ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>
-          </ion-col>
-          <ion-col size="6" size-sm="3"> <ion-card>
-              <ion-img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-              <ion-card-header>
-                <ion-card-title>100.00LE</ion-card-title>
-                <ion-card-subtitle>FrappIT</ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>
-          </ion-col>
-          <ion-col size="6" size-sm="3"> <ion-card>
-              <ion-img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-              <ion-card-header>
-                <ion-card-title>100.00LE</ion-card-title>
-                <ion-card-subtitle>FrappIT</ion-card-subtitle>
-              </ion-card-header>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
+    <ion-grid [fixed]="true">
+      <ion-row class="pb-2">
+        <ion-col size="12">
+          <div class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item" *ngFor="let item of carouselItems; let i = index"
+                [class.active]="i === currentIndex">
+                <ion-img class="d-block w-100" [src]="item.src" [alt]="item.alt"></ion-img>
+              </div>
+            </div>
+            <div class="carousel-control-prev">
+              <ion-button (click)="previousCarouselArrow()">
+                <span class="carousel-control-prev-icon"></span>
+              </ion-button>
+            </div>
+            <div class="carousel-control-next">
+              <ion-button (click)="nextCarouselArrow()">
+                <span class="carousel-control-next-icon"></span>
+              </ion-button>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3">
+          <ion-card>
+            <img alt="Silhouette of mountains"
+              src="https://cdnprod.mafretailproxy.com/sys-master-root/h7c/h21/17582776811550/450569_main.jpg_1700Wx1700H?im=Resize=400" />
+            <ion-card-header>
+              <ion-card-title>8,500 L.E</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              JAC 43JB621 - 43-inch Full HD LED Smart TV
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
 </ion-content>
